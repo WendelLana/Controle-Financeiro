@@ -1,0 +1,165 @@
+﻿<Window 
+    x:Class="ControleFinanceiro.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:ControleFinanceiro"
+    mc:Ignorable="d"
+    Title="MainWindow" 
+    Height="600"
+    Width="1200"
+    xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+ >
+
+    <StackPanel>
+
+        <Border 
+                BorderThickness="0 0 0 1" 
+                BorderBrush="Gray" 
+                Margin="0 0 0 10"
+                Grid.Row="0" 
+                Grid.Column="0"
+            >
+            <StackPanel 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 0 0 20"
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                >
+                <TextBlock 
+                    FontWeight="Bold"
+                    FontSize="32"
+                    Padding="0 0 0 10"
+                >Saldo</TextBlock>
+
+                <TextBlock 
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Foreground="Green"
+                    FontSize="24"
+                >R$1000,00</TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="1000"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border 
+                BorderThickness="0 0 1 0" 
+                BorderBrush="Gray" 
+                Margin="0 0 0 10"
+                Grid.Row="0" 
+                Grid.Column="0"
+            >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+
+
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="0"
+                    
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="20"
+
+                    >
+
+                        <StackPanel 
+                            Orientation="Horizontal" 
+                            Margin="0 0 0 40"
+                            Name="IncomeIcon"
+                            MouseEnter="IncomeIcon_MouseEnter" 
+                            MouseLeave="IncomeIcon_MouseLeave"
+                            ToolTipService.InitialShowDelay="1000"
+                            ToolTipService.BetweenShowDelay="2000"
+                            ToolTipService.ShowDuration="2000"
+                            ToolTip="Realizar entrada"
+                        >
+                            <iconPacks:PackIconMaterialDesign
+                                Padding="5"
+                                Kind="AttachMoney" 
+                                Width="40" 
+                                Height="40"
+                                Foreground="DarkGreen"
+                            />
+                            <TextBlock VerticalAlignment="Center" Padding="5">Entrada</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel 
+                            Name="OutcomeIcon"
+                            Orientation="Horizontal" 
+                            Margin="0 0 0 40"
+                            MouseEnter="OutcomeIcon_MouseEnter" 
+                            MouseLeave="OutcomeIcon_MouseLeave"
+                            ToolTipService.InitialShowDelay="1000"
+                            ToolTipService.BetweenShowDelay="2000"
+                            ToolTipService.ShowDuration="2000"
+                            ToolTip="Realizar saída" MouseDown="OutcomeIcon_MouseDown"
+                        >
+                            <iconPacks:PackIconUnicons
+                                Kind="Bill" 
+                                Width="40" 
+                                Height="40" 
+                                Padding="5"
+                                Foreground="Red"
+                            />
+                            <TextBlock VerticalAlignment="Center" Padding="5">Saída</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel 
+                            Name="ChartIcon"
+                            Orientation="Horizontal"
+                            MouseEnter="ChartIcon_MouseEnter" 
+                            MouseLeave="ChartIcon_MouseLeave"
+                            ToolTipService.InitialShowDelay="1000"
+                            ToolTipService.BetweenShowDelay="2000"
+                            ToolTipService.ShowDuration="2000"
+                            ToolTip="Visualizar gráficos"
+                        >
+                            <iconPacks:PackIconUnicons
+                                Kind="Chart"
+                                Width="40" 
+                                Height="40" 
+                                Padding="5"
+                                Foreground="Black"
+                            />
+                            <TextBlock VerticalAlignment="Center" Padding="5">Gráficos</TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <StackPanel
+            HorizontalAlignment="Center"
+            Grid.Row="0" 
+            Grid.Column="1"
+        >
+                <TextBlock FontSize="18" Margin="0 0 0 10">Últimas Movimentações</TextBlock>
+                <DataGrid Name="TabelaUltimosRegistros" >
+
+                </DataGrid>
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
+
+</Window>

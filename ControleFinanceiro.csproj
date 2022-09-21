@@ -8,17 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\Categoria.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="controllers\" />
+    <Folder Include="models\" />
+    <Folder Include="views\pages\" />
   </ItemGroup>
 
 </Project>
