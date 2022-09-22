@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="controllers\" />
-    <Folder Include="models\" />
-    <Folder Include="views\pages\" />
+    <Folder Include="pasta1\" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:ControleFinanceiro"
+    xmlns:viewmodels="clr-namespace:ControleFinanceiro.viewModels"
+    xmlns:views="clr-namespace:ControleFinanceiro.views"
     mc:Ignorable="d"
     Title="MainWindow" 
     Height="600"
@@ -12,23 +14,31 @@
     xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
  >
+    <Window.Resources>
+        <DataTemplate x:Name="gastosViewTemplate" DataType="{x:Type viewmodels:GastosViewModel}">
+            <views:GastosView DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
+            <views:GastosView DataContext="{Binding}" />
+        </DataTemplate>
+    </Window.Resources>
 
     <StackPanel>
 
         <Border 
-                BorderThickness="0 0 0 1" 
-                BorderBrush="Gray" 
-                Margin="0 0 0 10"
+            BorderThickness="0 0 0 1" 
+            BorderBrush="Gray" 
+            Margin="0 0 0 10"
+            Grid.Row="0" 
+            Grid.Column="0"
+        >
+            <StackPanel 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0 0 0 20"
                 Grid.Row="0" 
                 Grid.Column="0"
             >
-            <StackPanel 
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Margin="0 0 0 20"
-                    Grid.Row="0" 
-                    Grid.Column="0"
-                >
                 <TextBlock 
                     FontWeight="Bold"
                     FontSize="32"
@@ -81,6 +91,27 @@
                         Margin="20"
 
                     >
+
+                        <StackPanel 
+                            Orientation="Horizontal" 
+                            Margin="0 0 0 40"
+                            Name="HomeIcon"
+                            MouseEnter="HomeIcon_MouseEnter" 
+                            MouseLeave="HomeIcon_MouseLeave"
+                            ToolTipService.InitialShowDelay="1000"
+                            ToolTipService.BetweenShowDelay="2000"
+                            ToolTipService.ShowDuration="2000"
+                            ToolTip="Tela principal" MouseDown="HomeIcon_MouseDown"
+                        >
+                            <iconPacks:PackIconMaterialDesign
+                                Padding="5"
+                                Kind="Home" 
+                                Width="40" 
+                                Height="40"
+                                Foreground="Black"
+                            />
+                            <TextBlock VerticalAlignment="Center" Padding="5">Home</TextBlock>
+                        </StackPanel>
 
                         <StackPanel 
                             Orientation="Horizontal" 
@@ -148,16 +179,8 @@
                 </Grid>
             </Border>
 
-            <StackPanel
-            HorizontalAlignment="Center"
-            Grid.Row="0" 
-            Grid.Column="1"
-        >
-                <TextBlock FontSize="18" Margin="0 0 0 10">Últimas Movimentações</TextBlock>
-                <DataGrid Name="TabelaUltimosRegistros" >
-
-                </DataGrid>
-            </StackPanel>
+            <ContentControl Content="{Binding}" Grid.Row="0" 
+            Grid.Column="1" Margin="20 0 20 0"/>
 
         </Grid>
     </StackPanel>

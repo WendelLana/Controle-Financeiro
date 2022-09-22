@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using ControleFinanceiro.views;
 
 
 namespace ControleFinanceiro
@@ -25,19 +26,28 @@ namespace ControleFinanceiro
         public MainWindow()
         {
             InitializeComponent();
-            var clientes = new[]{
-                  new {Nome = "José Maria", Telefone = "3333-3333", Email = "josemaria@email.com"},
-                  new {Nome = "Antonio Carlos", Telefone = "4444-4444", Email = "antonio@email.com"},
-                  new {Nome = "Pedro Henrique", Telefone = "5555-5555", Email = "pedro@email.com"},
-                  new {Nome = "Augusto Cesar", Telefone = "6666-6666", Email = "augusto@email.com"},
-                  new {Nome = "Carlos Silva", Telefone = "7777-7777", Email = "carlos@email.com"}
-              };
+            DataContext = new HomeView();
+            //var clientes = new[]{
+            //      new {Nome = "José Maria", Telefone = "3333-3333", Email = "josemaria@email.com"},
+            //      new {Nome = "Antonio Carlos", Telefone = "4444-4444", Email = "antonio@email.com"},
+            //      new {Nome = "Pedro Henrique", Telefone = "5555-5555", Email = "pedro@email.com"},
+            //      new {Nome = "Augusto Cesar", Telefone = "6666-6666", Email = "augusto@email.com"},
+            //      new {Nome = "Carlos Silva", Telefone = "7777-7777", Email = "carlos@email.com"}
+            //  };
 
-            TabelaUltimosRegistros.ItemsSource = clientes;
+            //TabelaUltimosRegistros.ItemsSource = clientes;
         }
 
         private BrushConverter bc = new BrushConverter();
+        private void HomeIcon_MouseEnter(object sender, MouseEventArgs e)
+        {
+            HomeIcon.Background = (Brush)this.bc.ConvertFrom("#33000000");
+        }
 
+        private void HomeIcon_MouseLeave(object sender, MouseEventArgs e)
+        {
+            HomeIcon.Background = new SolidColorBrush(Colors.White);
+        }
         private void IncomeIcon_MouseEnter(object sender, MouseEventArgs e)
         {
             IncomeIcon.Background = (Brush)this.bc.ConvertFrom("#33006400");
@@ -68,8 +78,12 @@ namespace ControleFinanceiro
 
         private void OutcomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //GerenciarGasto win = new GerenciarGasto();
-            //win.Show();
+            DataContext = new GastosView();
+        }
+
+        private void HomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new HomeView();
         }
     }
 }
