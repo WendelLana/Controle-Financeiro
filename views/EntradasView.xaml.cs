@@ -14,24 +14,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ControleFinanceiro.controllers;
 using ControleFinanceiro.models;
-using Bogus;
 
 namespace ControleFinanceiro.views
 {
     /// <summary>
-    /// Interação lógica para GastosView.xam
+    /// Interaction logic for EntradasView.xaml
     /// </summary>
-    public partial class GastosView : UserControl
+    public partial class EntradasView : UserControl
     {
-        GastoController controller = new GastoController();
+        EntradaController controller = new EntradaController();
 
         MovimentacaoModel selectedGasto = new MovimentacaoModel();
 
-        public GastosView()
+        public EntradasView()
         {
             InitializeComponent();
             var dados = controller.readFakeValues();
-            GastosTable.ItemsSource = dados;
+            EntradasTable.ItemsSource = dados;
         }
 
         public MovimentacaoModel getSelectedGasto()
@@ -41,14 +40,14 @@ namespace ControleFinanceiro.views
 
         private void CadastrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            var gerenciarWindow = new GerenciarGasto("Cadastrar Gasto", new MovimentacaoModel(), "cadastrar");
+            var gerenciarWindow = new GerenciarEntrada("Cadastrar Entrada", new MovimentacaoModel(), "cadastrar");
             gerenciarWindow.Show();
         }
 
         private void EditarBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedGasto = (sender as FrameworkElement).DataContext as MovimentacaoModel;
-            var gerenciarWindow = new GerenciarGasto("Editar Gasto", new MovimentacaoModel(selectedGasto), "editar");
+            var gerenciarWindow = new GerenciarEntrada("Editar Entrada", new MovimentacaoModel(selectedGasto), "editar");
             gerenciarWindow.Show();
         }
 

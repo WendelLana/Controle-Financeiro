@@ -8,5 +8,6 @@ namespace ControleFinanceiro.viewModels
 {
     public class GastosViewModel
     {
+        
     }
 }

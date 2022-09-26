@@ -5,8 +5,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ControleFinanceiro.views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Red">
-            
-    </Grid>
+             d:DesignHeight="400" d:DesignWidth="800">
+    <StackPanel>
+
+        <Grid Margin="0 0 0 26">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock 
+                x:Name="TitleTextBlock"
+                HorizontalAlignment="Left" 
+                Grid.Row="0"
+                Grid.Column="0"
+                FontSize="18" 
+                FontWeight="Bold" 
+                >Últimas movimentações</TextBlock>
+        </Grid>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DataGrid 
+                x:Name="HomeTable" 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                Height="350"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ColumnWidth="*"
+                >
+
+            </DataGrid>
+        </Grid>
+    </StackPanel>
+    
 </UserControl>
