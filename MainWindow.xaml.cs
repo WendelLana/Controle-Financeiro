@@ -16,7 +16,7 @@ using System.Diagnostics;
 using ControleFinanceiro.views;
 using System.Globalization;
 using System.Threading;
-
+using ControleFinanceiro.controllers;
 
 namespace ControleFinanceiro
 {
@@ -25,15 +25,16 @@ namespace ControleFinanceiro
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private readonly Context context;
         public Decimal saldo { get; set; }
 
         public void atualizaSaldoText()
         {
             SaldoText.Text = $"R${string.Format("{0:#.00}", Convert.ToDecimal(this.saldo))}";
         }
-        public MainWindow()
+        public MainWindow(Context context)
         {
+            this.context = context;
             CultureInfo culture = (CultureInfo) CultureInfo.CurrentCulture.Clone();
             culture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
             culture.DateTimeFormat.LongTimePattern = "";
@@ -45,15 +46,19 @@ namespace ControleFinanceiro
             
             atualizaSaldoText();
         }
+        private void HomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new HomeView();
+        }
+
+        private void CategoryIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new CategoryView(context);
+        }
 
         private void OutcomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = new GastosView();
-        }
-
-        private void HomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DataContext = new HomeView();
         }
 
         private void IncomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
