@@ -8,12 +8,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
-    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <Compile Remove="pasta1\**" />
+    <EmbeddedResource Remove="pasta1\**" />
+    <None Remove="pasta1\**" />
+    <Page Remove="pasta1\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="pasta1\" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.4.0" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="views\GerenciarEntrada.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="views\GerenciarEntrada.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

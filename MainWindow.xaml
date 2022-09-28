@@ -21,6 +21,71 @@
         <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
             <views:GastosView DataContext="{Binding}" />
         </DataTemplate>
+
+        <Style x:Key="BaseMenuBorderWrapper" TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="ToolTipService.InitialShowDelay" Value="1000"></Setter>
+            <Setter Property="ToolTipService.BetweenShowDelay" Value="2000"></Setter>
+            <Setter Property="ToolTipService.ShowDuration" Value="2000"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+        </Style>
+
+        <Style x:Key="MenuHomeWrapper" BasedOn="{StaticResource BaseMenuBorderWrapper}" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="0 0 0 40" />
+            <Setter Property="ToolTip" Value="Tela Principal" />
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#33000000"></Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="White"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MenuEntradaWrapper" BasedOn="{StaticResource BaseMenuBorderWrapper}" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="0 0 0 40" />
+            <Setter Property="ToolTip" Value="Realizar Entrada" />
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#33006400"></Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="White"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MenuSaidaWrapper" BasedOn="{StaticResource BaseMenuBorderWrapper}" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="0 0 0 40" />
+            <Setter Property="ToolTip" Value="Realizar Saída" />
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#33FF0000"></Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="White"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MenuGraficosWrapper" BasedOn="{StaticResource BaseMenuBorderWrapper}" TargetType="{x:Type Border}">
+            <Setter Property="ToolTip" Value="Visualizar Gráficos" />
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#33000000"></Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="White"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <StackPanel>
@@ -46,6 +111,7 @@
                 >Saldo</TextBlock>
 
                 <TextBlock 
+                    Name="SaldoText"
                     Grid.Row="0" 
                     Grid.Column="0"
                     Foreground="Green"
@@ -91,89 +157,76 @@
                         Margin="20"
 
                     >
+                        <Border 
+                            Name="HomeIcon" 
+                            Style="{DynamicResource MenuHomeWrapper}"
+                            MouseDown="HomeIcon_MouseDown"
+                            >
 
-                        <StackPanel 
-                            Orientation="Horizontal" 
-                            Margin="0 0 0 40"
-                            Name="HomeIcon"
-                            MouseEnter="HomeIcon_MouseEnter" 
-                            MouseLeave="HomeIcon_MouseLeave"
-                            ToolTipService.InitialShowDelay="1000"
-                            ToolTipService.BetweenShowDelay="2000"
-                            ToolTipService.ShowDuration="2000"
-                            ToolTip="Tela principal" MouseDown="HomeIcon_MouseDown"
-                        >
-                            <iconPacks:PackIconMaterialDesign
-                                Padding="5"
-                                Kind="Home" 
-                                Width="40" 
-                                Height="40"
-                                Foreground="Black"
-                            />
-                            <TextBlock VerticalAlignment="Center" Padding="5">Home</TextBlock>
-                        </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterialDesign
+                                    Padding="5"
+                                    Kind="Home" 
+                                    Width="40" 
+                                    Height="40"
+                                    Foreground="Black"
+                                    />
+                                <TextBlock VerticalAlignment="Center" Padding="5">Home</TextBlock>
+                            </StackPanel>
+                        </Border>
 
-                        <StackPanel 
-                            Orientation="Horizontal" 
-                            Margin="0 0 0 40"
-                            Name="IncomeIcon"
-                            MouseEnter="IncomeIcon_MouseEnter" 
-                            MouseLeave="IncomeIcon_MouseLeave"
-                            ToolTipService.InitialShowDelay="1000"
-                            ToolTipService.BetweenShowDelay="2000"
-                            ToolTipService.ShowDuration="2000"
-                            ToolTip="Realizar entrada"
-                        >
-                            <iconPacks:PackIconMaterialDesign
-                                Padding="5"
-                                Kind="AttachMoney" 
-                                Width="40" 
-                                Height="40"
-                                Foreground="DarkGreen"
-                            />
-                            <TextBlock VerticalAlignment="Center" Padding="5">Entrada</TextBlock>
-                        </StackPanel>
+                        <Border
+                            Name="IncomeIcon" 
+                            Style="{DynamicResource MenuEntradaWrapper}"
+                            MouseDown="IncomeIcon_MouseDown"
+                            >
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterialDesign
+                                    Padding="5"
+                                    Kind="AttachMoney" 
+                                    Width="40" 
+                                    Height="40"
+                                    Foreground="DarkGreen"
+                                />
+                                <TextBlock VerticalAlignment="Center" Padding="5">Entrada</TextBlock>
+                            </StackPanel>
+                        </Border>
+                        
 
-                        <StackPanel 
-                            Name="OutcomeIcon"
-                            Orientation="Horizontal" 
-                            Margin="0 0 0 40"
-                            MouseEnter="OutcomeIcon_MouseEnter" 
-                            MouseLeave="OutcomeIcon_MouseLeave"
-                            ToolTipService.InitialShowDelay="1000"
-                            ToolTipService.BetweenShowDelay="2000"
-                            ToolTipService.ShowDuration="2000"
-                            ToolTip="Realizar saída" MouseDown="OutcomeIcon_MouseDown"
-                        >
-                            <iconPacks:PackIconUnicons
-                                Kind="Bill" 
-                                Width="40" 
-                                Height="40" 
-                                Padding="5"
-                                Foreground="Red"
-                            />
-                            <TextBlock VerticalAlignment="Center" Padding="5">Saída</TextBlock>
-                        </StackPanel>
+                        <Border
+                            Name="OutcomeIcon" 
+                            Style="{DynamicResource MenuSaidaWrapper}"
+                            MouseDown="OutcomeIcon_MouseDown"
+                            >
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconUnicons
+                                    Kind="Bill" 
+                                    Width="40" 
+                                    Height="40" 
+                                    Padding="5"
+                                    Foreground="Red"
+                                />
+                                <TextBlock VerticalAlignment="Center" Padding="5">Saída</TextBlock>
+                            </StackPanel>
+                        </Border>
 
-                        <StackPanel 
-                            Name="ChartIcon"
-                            Orientation="Horizontal"
-                            MouseEnter="ChartIcon_MouseEnter" 
-                            MouseLeave="ChartIcon_MouseLeave"
-                            ToolTipService.InitialShowDelay="1000"
-                            ToolTipService.BetweenShowDelay="2000"
-                            ToolTipService.ShowDuration="2000"
-                            ToolTip="Visualizar gráficos"
-                        >
-                            <iconPacks:PackIconUnicons
-                                Kind="Chart"
-                                Width="40" 
-                                Height="40" 
-                                Padding="5"
-                                Foreground="Black"
-                            />
-                            <TextBlock VerticalAlignment="Center" Padding="5">Gráficos</TextBlock>
-                        </StackPanel>
+
+                        <Border
+                            Name="ChartIcon" 
+                            Style="{DynamicResource MenuGraficosWrapper}"
+                            >
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconUnicons
+                                    Kind="Chart"
+                                    Width="40" 
+                                    Height="40" 
+                                    Padding="5"
+                                    Foreground="Black"
+                                />
+                                <TextBlock VerticalAlignment="Center" Padding="5">Gráficos</TextBlock>
+                            </StackPanel>
+                        </Border>
+                        
 
                     </StackPanel>
                 </Grid>
