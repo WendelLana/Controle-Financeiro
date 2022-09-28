@@ -23,7 +23,7 @@ namespace ControleFinanceiro.views
     public partial class CategoryView : UserControl
     {
         private readonly Context context;
-        Category NewCategory;
+        Category NewCategory = new();
         public CategoryView(Context context)
         {
             this.context = context;
@@ -37,12 +37,20 @@ namespace ControleFinanceiro.views
             CategoryDataGrid.ItemsSource = context.Categories.ToList();
         }
 
-        private void EditCategory(object sender, MouseButtonEventArgs e)
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void DeleteCategory(object sender, MouseButtonEventArgs e)
+        private void RemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var category = (sender as FrameworkElement).DataContext as Category;
+            context.Categories.Remove(category);
+            context.SaveChanges();
+            GetCategories();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

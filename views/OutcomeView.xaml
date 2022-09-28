@@ -25,7 +25,7 @@
                 FontWeight="Bold" 
                 >Gastos</TextBlock>
             <Button 
-                x:Name="CadastrarBtn"
+                x:Name="AddBtn"
                 HorizontalAlignment="Right" 
                 Grid.Row="0"
                 Grid.Column="1"
@@ -46,7 +46,7 @@
             </Grid.RowDefinitions>
 
             <DataGrid 
-                x:Name="GastosTable" 
+                x:Name="OutcomeTable" 
                 Grid.Row="0" 
                 Grid.Column="0" 
                 Height="350"

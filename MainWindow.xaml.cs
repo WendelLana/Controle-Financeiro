@@ -58,12 +58,12 @@ namespace ControleFinanceiro
 
         private void OutcomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new OutcomeView();
+            DataContext = new OutcomeView(context);
         }
 
         private void IncomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new IncomeView();
+            DataContext = new IncomeView(context);
         }
     }
 }

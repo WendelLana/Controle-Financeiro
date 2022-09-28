@@ -23,15 +23,17 @@ namespace ControleFinanceiro.views
     /// </summary>
     public partial class OutcomeView : UserControl
     {
+        private readonly Context context;
         OutcomeController controller = new OutcomeController();
 
         Movimentation selectedOutcome = new Movimentation();
 
-        public OutcomeView()
+        public OutcomeView(Context context)
         {
+            this.context = context;
             InitializeComponent();
-            var dados = controller.readFakeValues();
-            GastosTable.ItemsSource = dados;
+            var data = controller.readFakeValues();
+            OutcomeTable.ItemsSource = data;
         }
 
         public Movimentation getSelectedOutcome()
@@ -41,15 +43,15 @@ namespace ControleFinanceiro.views
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var gerenciarWindow = new FormOutcome("Cadastrar Gasto", new Movimentation(), "cadastrar");
-            gerenciarWindow.Show();
+            var formWindow = new FormOutcome("Cadastrar Gasto", new Movimentation(), "cadastrar");
+            formWindow.Show();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedOutcome = (sender as FrameworkElement).DataContext as Movimentation;
-            var gerenciarWindow = new FormOutcome("Editar Gasto", new Movimentation(selectedOutcome), "editar");
-            gerenciarWindow.Show();
+            var formWindow = new FormOutcome("Editar Gasto", new Movimentation(selectedOutcome), "editar");
+            formWindow.Show();
         }
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)

@@ -22,12 +22,14 @@ namespace ControleFinanceiro.views
     /// </summary>
     public partial class IncomeView : UserControl
     {
+        private readonly Context context;
         IncomeController controller = new IncomeController();
 
         Movimentation selectedIncome = new Movimentation();
 
-        public IncomeView()
+        public IncomeView(Context context)
         {
+            this.context = context;
             InitializeComponent();
             var dados = controller.readFakeValues();
             IncomeTable.ItemsSource = dados;
@@ -40,8 +42,8 @@ namespace ControleFinanceiro.views
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var gerenciarWindow = new FormIncome("Cadastrar Entrada", new Movimentation(), "cadastrar");
-            gerenciarWindow.Show();
+            var formWindow = new FormIncome("Cadastrar Entrada", new Movimentation(), "cadastrar");
+            formWindow.Show();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
