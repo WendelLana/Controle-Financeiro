@@ -1,4 +1,4 @@
-﻿<Window x:Class="ControleFinanceiro.views.GerenciarGasto"
+﻿<Window x:Class="ControleFinanceiro.views.FormOutcome"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -79,7 +79,7 @@
                 Margin="5"
                 />
 
-            <Grid Name="GastoGrid">
+            <Grid Name="OutcomeGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -96,21 +96,21 @@
                 <Label Grid.Row="0" Grid.Column="0" Content="Data" />
                 <xctk:DateTimePicker
                     Grid.Row="0" Grid.Column="1"
-                    Value="{Binding data}"
+                    Value="{Binding date}"
                     Format="Custom"
                     FormatString="dd/MM/yyyy HH:mm tt"
                     TextAlignment="Left"
                     />
 
                 <Label Grid.Row="1" Grid.Column="0" Content="Valor" />
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding valor}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding value}" />
 
                 <Label Grid.Row="2" Grid.Column="0" Content="Descrição" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding descricao}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding description}" />
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Categoria" />
                 <!-- Combo box para escolher em uma lista de categorias -->
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding categoriaId}" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding categoryId}" />
 
                 <Button 
                     Grid.Row="4" 

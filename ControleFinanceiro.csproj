@@ -24,13 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="views\GerenciarEntrada.xaml.cs">
+    <Compile Update="views\FormIncome.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="views\GerenciarEntrada.xaml">
+    <Page Update="views\FormIncome.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

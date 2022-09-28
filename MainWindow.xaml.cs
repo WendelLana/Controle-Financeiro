@@ -26,11 +26,11 @@ namespace ControleFinanceiro
     public partial class MainWindow : Window
     {
         private readonly Context context;
-        public Decimal saldo { get; set; }
+        public Decimal balance { get; set; }
 
-        public void atualizaSaldoText()
+        public void updateBalanceText()
         {
-            SaldoText.Text = $"R${string.Format("{0:#.00}", Convert.ToDecimal(this.saldo))}";
+            SaldoText.Text = $"R${string.Format("{0:#.00}", Convert.ToDecimal(this.balance))}";
         }
         public MainWindow(Context context)
         {
@@ -40,11 +40,11 @@ namespace ControleFinanceiro
             culture.DateTimeFormat.LongTimePattern = "";
             Thread.CurrentThread.CurrentCulture = culture;
             
-            this.saldo = 25.5M;
+            this.balance = 25.5M;
             InitializeComponent();
             DataContext = new HomeView();
             
-            atualizaSaldoText();
+            updateBalanceText();
         }
         private void HomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -58,12 +58,12 @@ namespace ControleFinanceiro
 
         private void OutcomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new GastosView();
+            DataContext = new OutcomeView();
         }
 
         private void IncomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new EntradasView();
+            DataContext = new IncomeView();
         }
     }
 }

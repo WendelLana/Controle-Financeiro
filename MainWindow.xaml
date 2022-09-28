@@ -16,10 +16,10 @@
  >
     <Window.Resources>
         <DataTemplate x:Name="gastosViewTemplate" DataType="{x:Type viewmodels:GastosViewModel}">
-            <views:GastosView DataContext="{Binding}" />
+            <views:OutcomeView DataContext="{Binding}" />
         </DataTemplate>
         <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
-            <views:GastosView DataContext="{Binding}" />
+            <views:OutcomeView DataContext="{Binding}" />
         </DataTemplate>
 
         <Style x:Key="BaseMenuBorderWrapper" TargetType="{x:Type Border}">

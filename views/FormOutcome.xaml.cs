@@ -18,29 +18,29 @@ namespace ControleFinanceiro.views
     /// <summary>
     /// Interaction logic for GerenciarGasto.xaml
     /// </summary>
-    public partial class GerenciarGasto : Window
+    public partial class FormOutcome : Window
     {
 
-        private string tipoAcao = "";
-        private GastosView parentView;
-        private MovimentacaoModel modelData;
-        public GerenciarGasto()
+        private string typeAction = "";
+        private OutcomeView parentView;
+        private Movimentation modelData;
+        public FormOutcome()
         {
-            parentView = (GastosView)Application.Current.MainWindow.DataContext;
-            modelData = parentView.getSelectedGasto();
+            parentView = (OutcomeView)Application.Current.MainWindow.DataContext;
+            modelData = parentView.getSelectedOutcome();
             InitializeComponent();
             
         }
 
-        public GerenciarGasto(string titleLabel, MovimentacaoModel data, string tipo)
+        public FormOutcome(string titleLabel, Movimentation data, string type)
         {
-            parentView = (GastosView)Application.Current.MainWindow.DataContext;
+            parentView = (OutcomeView)Application.Current.MainWindow.DataContext;
             modelData = data;
-            tipoAcao = tipo;
+            typeAction = type;
 
             InitializeComponent();
             TitleLabel.Content = titleLabel;
-            GastoGrid.DataContext = data;
+            OutcomeGrid.DataContext = data;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
