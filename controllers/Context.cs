@@ -12,8 +12,8 @@ namespace ControleFinanceiro.controllers
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Category> Outcome { get; set; }
-        public DbSet<Category> Income { get; set; }
+        public DbSet<Movimentation> Outcome { get; set; }
+        public DbSet<Movimentation> Income { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
