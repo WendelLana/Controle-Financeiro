@@ -24,16 +24,10 @@ namespace ControleFinanceiro.views
     {
         private string typeAction = "";
         private CategoryView parentView;
-        private Category modelData;
-        public FormCategory()
-        {
-            InitializeComponent();
-        }
 
         public FormCategory(string titleLabel, Category data, string type)
         {   
             parentView = (CategoryView)Application.Current.MainWindow.DataContext;
-            modelData = data;
             typeAction = type;
 
             InitializeComponent();
@@ -45,15 +39,12 @@ namespace ControleFinanceiro.views
         {
             if (typeAction.Equals("cadastrar"))
             {
-                Category NewCategory = new();
-                NewCategory = CategoryGrid.DataContext as Category;
-                parentView.AddCategory(NewCategory);
+                Category newCategory = CategoryGrid.DataContext as Category;
+                parentView.AddCategory(newCategory);
             } else if (typeAction.Equals("editar"))
             {
-                Category editCategory = new();
-                editCategory = CategoryGrid.DataContext as Category;
-                //editCategory.categoryId = new Guid();
-                //parentView.EditCategory(editCategory);
+                Category editCategory = CategoryGrid.DataContext as Category;
+                parentView.EditCategory(editCategory);
             } else
             {
                 //error

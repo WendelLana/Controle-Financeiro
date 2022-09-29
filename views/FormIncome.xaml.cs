@@ -23,19 +23,10 @@ namespace ControleFinanceiro.views
 
         private string typeAction = "";
         private IncomeView parentView;
-        private Movimentation modelData;
-        public FormIncome()
-        {
-            parentView = (IncomeView)Application.Current.MainWindow.DataContext;
-            modelData = parentView.getSelectedIncome();
-            InitializeComponent();
-            
-        }
 
-        public FormIncome(string titleLabel, Movimentation data, string type)
+        public FormIncome(string titleLabel, Income data, string type)
         {
             parentView = (IncomeView)Application.Current.MainWindow.DataContext;
-            modelData = data;
             typeAction = type;
 
             InitializeComponent();
@@ -45,7 +36,21 @@ namespace ControleFinanceiro.views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (typeAction.Equals("cadastrar"))
+            {
+                Income newIncome = IncomeGrid.DataContext as Income;
+                parentView.AddIncome(newIncome);
+            }
+            else if (typeAction.Equals("editar"))
+            {
+                Income editIncome = IncomeGrid.DataContext as Income;
+                parentView.EditIncome(editIncome);
+            }
+            else
+            {
+                //error
+            }
+            Close();
         }
     }
 }

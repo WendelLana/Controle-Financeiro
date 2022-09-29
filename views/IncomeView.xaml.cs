@@ -23,40 +23,52 @@ namespace ControleFinanceiro.views
     public partial class IncomeView : UserControl
     {
         private readonly Context context;
-        IncomeController controller = new IncomeController();
-
-        Movimentation selectedIncome = new Movimentation();
 
         public IncomeView(Context context)
         {
             this.context = context;
             InitializeComponent();
-            var dados = controller.readFakeValues();
-            IncomeTable.ItemsSource = dados;
+            GetIncomes();
         }
 
-        public Movimentation getSelectedIncome()
+        private void GetIncomes()
         {
-            return selectedIncome;
+            IncomeTable.ItemsSource = context.Incomes.ToList();
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var formWindow = new FormIncome("Cadastrar Entrada", new Movimentation(), "cadastrar");
+            var formWindow = new FormIncome("Cadastrar Entrada", new Income(), "cadastrar");
             formWindow.Show();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            selectedIncome = (sender as FrameworkElement).DataContext as Movimentation;
-            var gerenciarWindow = new FormIncome("Editar Entrada", new Movimentation(selectedIncome), "editar");
+            Income selectedIncome = (sender as FrameworkElement).DataContext as Income;
+            var gerenciarWindow = new FormIncome("Editar Entrada", selectedIncome, "editar");
             gerenciarWindow.Show();
         }
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            selectedIncome = (sender as FrameworkElement).DataContext as Movimentation;
+            Income income = (sender as FrameworkElement).DataContext as Income;
+            context.Incomes.Remove(income);
+            context.SaveChanges();
+            GetIncomes();
+        }
 
+        public void EditIncome(Income income)
+        {
+            context.Incomes.Update(income);
+            context.SaveChanges();
+            GetIncomes();
+        }
+
+        public void AddIncome(Income income)
+        {
+            context.Incomes.Add(income);
+            context.SaveChanges();
+            GetIncomes();
         }
     }
 }

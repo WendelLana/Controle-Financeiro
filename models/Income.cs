@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControleFinanceiro.models
 {
-    public class Movimentation
+    public class Income
     {
         public Guid id { get; set; } = Guid.Empty;
         public DateTime date { get; set; } = DateTime.Now;
@@ -14,15 +14,6 @@ namespace ControleFinanceiro.models
         public string description { get; set; } = string.Empty;
         public Guid categoryId { get; set; } = Guid.Empty;
 
-        public Movimentation() { }
-        // Construtor para copiar um objeto
-        public Movimentation(Movimentation model)
-        {
-            id = model.id;
-            date = model.date;
-            value = model.value;
-            description = model.description;
-            categoryId = model.categoryId;
-        }
+        public Income() { }
     }
 }

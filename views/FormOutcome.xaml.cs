@@ -23,16 +23,15 @@ namespace ControleFinanceiro.views
 
         private string typeAction = "";
         private OutcomeView parentView;
-        private Movimentation modelData;
+        private Outcome modelData;
         public FormOutcome()
         {
             parentView = (OutcomeView)Application.Current.MainWindow.DataContext;
-            modelData = parentView.getSelectedOutcome();
             InitializeComponent();
             
         }
 
-        public FormOutcome(string titleLabel, Movimentation data, string type)
+        public FormOutcome(string titleLabel, Outcome data, string type)
         {
             parentView = (OutcomeView)Application.Current.MainWindow.DataContext;
             modelData = data;
@@ -45,7 +44,21 @@ namespace ControleFinanceiro.views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (typeAction.Equals("cadastrar"))
+            {
+                Outcome newOutcome = OutcomeGrid.DataContext as Outcome;
+                parentView.AddOutcome(newOutcome);
+            }
+            else if (typeAction.Equals("editar"))
+            {
+                Outcome editOutcome = OutcomeGrid.DataContext as Outcome;
+                parentView.EditOutcome(editOutcome);
+            }
+            else
+            {
+                //error
+            }
+            Close();
         }
     }
 }

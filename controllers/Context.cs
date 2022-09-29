@@ -12,35 +12,7 @@ namespace ControleFinanceiro.controllers
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Movimentation> Outcome { get; set; }
-        public DbSet<Movimentation> Income { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Category>().HasData(GetCategories());
-            base.OnModelCreating(modelBuilder);
-        }
-
-        private static Category[] GetCategories()
-        {
-            return new Category[]
-            {
-            new Category
-            {
-                categoryId = Guid.NewGuid(),
-                name = "Contas de Água",
-                color = "blue",
-                icon = "src/water.jpg"
-                
-            },
-            new Category
-            {
-                categoryId = Guid.NewGuid(),
-                name = "Fatura do cartão",
-                color = "gray",
-                icon = "src/card.jpg"
-            }
-            };
-        }
+        public DbSet<Outcome> Outcomes { get; set; }
+        public DbSet<Income> Incomes { get; set; }
     }
 }

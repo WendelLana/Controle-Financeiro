@@ -10,9 +10,9 @@ namespace ControleFinanceiro.controllers
 {
     public class OutcomeController
     {
-        public List<Movimentation> readFakeValues()
+        public List<Outcome> readFakeValues()
         {
-            var faker = new Faker<Movimentation>()
+            var faker = new Faker<Outcome>()
                 .StrictMode(true)
                 .RuleFor(g => g.id, f => f.Random.Guid())
                 .RuleFor(g => g.date, f => f.Date.Recent())

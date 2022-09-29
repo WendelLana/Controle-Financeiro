@@ -23,7 +23,6 @@ namespace ControleFinanceiro.views
     public partial class CategoryView : UserControl
     {
         private readonly Context context;
-        Category selectedCategory = new();
         public CategoryView(Context context)
         {
             this.context = context;
@@ -38,8 +37,8 @@ namespace ControleFinanceiro.views
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            selectedCategory = (sender as FrameworkElement).DataContext as Category;
-            var formWindow = new FormCategory("Editar Categoria", new Category(selectedCategory), "editar");
+            Category selectedCategory = (sender as FrameworkElement).DataContext as Category;
+            var formWindow = new FormCategory("Editar Categoria", selectedCategory, "editar");
             formWindow.Show();
         }
 
