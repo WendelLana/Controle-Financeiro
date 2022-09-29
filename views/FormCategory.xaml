@@ -1,14 +1,12 @@
-﻿<Window x:Class="ControleFinanceiro.views.FormIncome"
+﻿<Window x:Class="ControleFinanceiro.views.FormCategory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleFinanceiro.views"
         mc:Ignorable="d"
-        Title="Gerenciar Entrada" Width="400" Height="250"
-        WindowStartupLocation="CenterScreen"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        >
+        Title="Gerenciar Categoria" Width="400" Height="250"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -79,9 +77,8 @@
                 Margin="5"
                 />
 
-            <Grid Name="IncomeGrid">
+            <Grid Name="CategoryGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
@@ -93,24 +90,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Content="Data" />
-                <xctk:DateTimePicker
-                    Grid.Row="0" Grid.Column="1"
-                    Value="{Binding date}"
-                    Format="Custom"
-                    FormatString="dd/MM/yyyy HH:mm tt"
-                    TextAlignment="Left"
-                    />
+                <Label Grid.Row="0" Grid.Column="0" Content="Nome" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding name}" />
 
-                <Label Grid.Row="1" Grid.Column="0" Content="Valor" />
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding value}" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Cor" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding color}" />
 
-                <Label Grid.Row="2" Grid.Column="0" Content="Descrição" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding description}" />
-
-                <Label Grid.Row="3" Grid.Column="0" Content="Categoria" />
-                <!-- Combo box para escolher em uma lista de categorias -->
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding categoryId}" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Ícone" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding icon}" />
 
                 <Button 
                     Grid.Row="4" 
@@ -119,7 +106,8 @@
                     Width="150"
                     Margin="15" 
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center" Click="Button_Click"
+                    VerticalAlignment="Center"
+                    Click="ConfirmBtn"
                     >Confirmar</Button>
             </Grid>
         </StackPanel>

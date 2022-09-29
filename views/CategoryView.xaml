@@ -22,7 +22,7 @@
                 Grid.Column="0"
                 FontSize="18" 
                 FontWeight="Bold" 
-                >Entradas</TextBlock>
+                >Categorias</TextBlock>
             <Button 
                 x:Name="AddBtn"
                 HorizontalAlignment="Right" 

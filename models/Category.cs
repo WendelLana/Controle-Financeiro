@@ -14,5 +14,14 @@ namespace ControleFinanceiro.models
         public string color { get; set; } = string.Empty;
 
         public string icon { get; set; } = string.Empty;
+
+        public Category() { }
+        public Category(Category model)
+        {
+            categoryId = model.categoryId;
+            name = model.name;
+            color = model.color;
+            icon = model.icon;
+        }
     }
 }

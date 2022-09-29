@@ -23,13 +23,12 @@ namespace ControleFinanceiro.views
     public partial class CategoryView : UserControl
     {
         private readonly Context context;
-        Category NewCategory = new();
+        Category selectedCategory = new();
         public CategoryView(Context context)
         {
             this.context = context;
             InitializeComponent();
             GetCategories();
-            CategoryDataGrid.DataContext = NewCategory;
         }
 
         private void GetCategories()
@@ -39,7 +38,9 @@ namespace ControleFinanceiro.views
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            selectedCategory = (sender as FrameworkElement).DataContext as Category;
+            var formWindow = new FormCategory("Editar Categoria", new Category(selectedCategory), "editar");
+            formWindow.Show();
         }
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)
@@ -52,7 +53,22 @@ namespace ControleFinanceiro.views
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            var formWindow = new FormCategory("Cadastrar Categoria", new Category(), "cadastrar");
+            formWindow.Show();
+        }
 
+        public void EditCategory(Category category)
+        {
+            context.Categories.Update(category);
+            context.SaveChanges();
+            GetCategories();
+        }
+
+        public void AddCategory(Category NewCategory)
+        {
+            context.Categories.Add(NewCategory);
+            context.SaveChanges();
+            GetCategories();
         }
     }
 }
