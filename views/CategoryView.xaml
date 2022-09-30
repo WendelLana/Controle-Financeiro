@@ -50,7 +50,7 @@
                   Margin="5"
                   IsSynchronizedWithCurrentItem="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Categoria Id" Binding="{Binding categoryId}"/>                
+                <DataGridTextColumn Header="Categoria Id" Binding="{Binding id}"/>                
                 <DataGridTextColumn Header="Nome" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Cor" Binding="{Binding color}"/>
                 <DataGridTextColumn Header="Ícone" Binding="{Binding icon}"/>

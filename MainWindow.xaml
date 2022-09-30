@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:ControleFinanceiro"
-    xmlns:viewmodels="clr-namespace:ControleFinanceiro.viewModels"
     xmlns:views="clr-namespace:ControleFinanceiro.views"
     mc:Ignorable="d"
     Title="MainWindow" 
@@ -15,12 +14,6 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
  >
     <Window.Resources>
-        <DataTemplate x:Name="gastosViewTemplate" DataType="{x:Type viewmodels:GastosViewModel}">
-            <views:OutcomeView DataContext="{Binding}" />
-        </DataTemplate>
-        <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewmodels:HomeViewModel}">
-            <views:OutcomeView DataContext="{Binding}" />
-        </DataTemplate>
 
         <Style x:Key="BaseMenuBorderWrapper" TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="10"></Setter>

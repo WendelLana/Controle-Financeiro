@@ -23,7 +23,7 @@ namespace ControleFinanceiro.views
 
         private string typeAction = "";
         private OutcomeView parentView;
-        private Outcome modelData;
+        private Transaction modelData;
         public FormOutcome()
         {
             parentView = (OutcomeView)Application.Current.MainWindow.DataContext;
@@ -31,7 +31,7 @@ namespace ControleFinanceiro.views
             
         }
 
-        public FormOutcome(string titleLabel, Outcome data, string type)
+        public FormOutcome(string titleLabel, Transaction data, string type)
         {
             parentView = (OutcomeView)Application.Current.MainWindow.DataContext;
             modelData = data;
@@ -46,12 +46,12 @@ namespace ControleFinanceiro.views
         {
             if (typeAction.Equals("cadastrar"))
             {
-                Outcome newOutcome = OutcomeGrid.DataContext as Outcome;
+                Transaction newOutcome = OutcomeGrid.DataContext as Transaction;
                 parentView.AddOutcome(newOutcome);
             }
             else if (typeAction.Equals("editar"))
             {
-                Outcome editOutcome = OutcomeGrid.DataContext as Outcome;
+                Transaction editOutcome = OutcomeGrid.DataContext as Transaction;
                 parentView.EditOutcome(editOutcome);
             }
             else

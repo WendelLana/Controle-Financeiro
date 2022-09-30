@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ControleFinanceiro.controllers;
+using ControleFinanceiro.models;
 
 namespace ControleFinanceiro.views
 {
@@ -20,9 +22,12 @@ namespace ControleFinanceiro.views
     /// </summary>
     public partial class HomeView : UserControl
     {
-        public HomeView()
+        private readonly TransactionController controller;
+        public HomeView(Context context)
         {
+            controller = new TransactionController(context);
             InitializeComponent();
+            HomeTable.ItemsSource = controller.GetAll();
         }
     }
 }

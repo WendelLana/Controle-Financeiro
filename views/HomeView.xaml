@@ -44,7 +44,13 @@
                 IsReadOnly="True"
                 ColumnWidth="*"
                 >
-
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Data" Binding="{Binding date}" />
+                    <DataGridTextColumn Header="Valor" Binding="{Binding value}" />
+                    <DataGridTextColumn Header="Descrição" Binding="{Binding description}" />
+                    <DataGridTextColumn Header="Categoria" Binding="{Binding categoryId}" />
+                    <DataGridTextColumn Header="Categoria" Binding="{Binding transactionType}" />
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
     </StackPanel>

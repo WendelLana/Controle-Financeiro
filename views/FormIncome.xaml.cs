@@ -24,7 +24,7 @@ namespace ControleFinanceiro.views
         private string typeAction = "";
         private IncomeView parentView;
 
-        public FormIncome(string titleLabel, Income data, string type)
+        public FormIncome(string titleLabel, Transaction data, string type)
         {
             parentView = (IncomeView)Application.Current.MainWindow.DataContext;
             typeAction = type;
@@ -38,12 +38,13 @@ namespace ControleFinanceiro.views
         {
             if (typeAction.Equals("cadastrar"))
             {
-                Income newIncome = IncomeGrid.DataContext as Income;
+                Transaction newIncome = IncomeGrid.DataContext as Transaction;
+                newIncome = IncomeGrid.DataContext as Transaction;
                 parentView.AddIncome(newIncome);
             }
             else if (typeAction.Equals("editar"))
             {
-                Income editIncome = IncomeGrid.DataContext as Income;
+                Transaction editIncome = IncomeGrid.DataContext as Transaction;
                 parentView.EditIncome(editIncome);
             }
             else

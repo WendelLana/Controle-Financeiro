@@ -8,7 +8,7 @@ namespace ControleFinanceiro.models
 {
     public class Category
     {
-        public Guid categoryId { get; set; }
+        public Guid id { get; set; }
         public string name { get; set; } = string.Empty;
 
         public string color { get; set; } = string.Empty;

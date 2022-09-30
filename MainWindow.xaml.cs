@@ -42,13 +42,13 @@ namespace ControleFinanceiro
             
             this.balance = 25.5M;
             InitializeComponent();
-            DataContext = new HomeView();
+            DataContext = new HomeView(context);
             
             updateBalanceText();
         }
         private void HomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new HomeView();
+            DataContext = new HomeView(context);
         }
 
         private void CategoryIcon_MouseDown(object sender, MouseButtonEventArgs e)

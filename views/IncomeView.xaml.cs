@@ -22,52 +22,50 @@ namespace ControleFinanceiro.views
     /// </summary>
     public partial class IncomeView : UserControl
     {
-        private readonly Context context;
+        private readonly IncomeController controller;
 
         public IncomeView(Context context)
         {
-            this.context = context;
+            controller = new IncomeController(context);
             InitializeComponent();
             GetIncomes();
         }
 
         private void GetIncomes()
         {
-            IncomeTable.ItemsSource = context.Incomes.ToList();
+            IncomeTable.ItemsSource = controller.GetAll();
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var formWindow = new FormIncome("Cadastrar Entrada", new Income(), "cadastrar");
+            var formWindow = new FormIncome("Cadastrar Entrada", new Transaction(), "cadastrar");
             formWindow.Show();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            Income selectedIncome = (sender as FrameworkElement).DataContext as Income;
+            Transaction selectedIncome = (sender as FrameworkElement).DataContext as Transaction;
             var gerenciarWindow = new FormIncome("Editar Entrada", selectedIncome, "editar");
             gerenciarWindow.Show();
         }
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            Income income = (sender as FrameworkElement).DataContext as Income;
-            context.Incomes.Remove(income);
-            context.SaveChanges();
+            Transaction income = (sender as FrameworkElement).DataContext as Transaction;
+            controller.Remove(income);
             GetIncomes();
         }
 
-        public void EditIncome(Income income)
+        public void EditIncome(Transaction income)
         {
-            context.Incomes.Update(income);
-            context.SaveChanges();
+            controller.Update(income);
             GetIncomes();
         }
 
-        public void AddIncome(Income income)
+        public void AddIncome(Transaction income)
         {
-            context.Incomes.Add(income);
-            context.SaveChanges();
+            income.transactionType = "I";
+            controller.Add(income);
             GetIncomes();
         }
     }
