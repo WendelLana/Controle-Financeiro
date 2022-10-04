@@ -17,19 +17,12 @@ namespace ControleFinanceiro.controllers
 
         public List<Transaction> GetAll()
         {
-            return this._context.Transactions.Where(obj => obj.transactionType == "I").ToList();
+            return _context.Transactions.Where(obj => obj.transactionType == "I").ToList();
         }
 
-        //public List<Transaction> readFakeValues()
-        //{
-        //    var faker = new Faker<Transaction>()
-        //        .StrictMode(true)
-        //        .RuleFor(g => g.id, f => f.Random.Guid())
-        //        .RuleFor(g => g.date, f => f.Date.Recent())
-        //        .RuleFor(g => g.value, f => f.Random.Decimal(0, 200000))
-        //        .RuleFor(g => g.description, f => f.Random.Word())
-        //        .RuleFor(g => g.categoryId, f => f.Random.Guid());
-        //    return faker.Generate(10);
-        //}
+        public List<Category> GetAvailableCategories()
+        {
+            return _context.Categories.Where(obj => obj.transactionType == "I").ToList();
+        }
     }
 }       

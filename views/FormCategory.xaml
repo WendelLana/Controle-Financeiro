@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:ControleFinanceiro.views"
         mc:Ignorable="d"
         Title="Gerenciar Categoria" Width="400" Height="250"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
+        >
     <Window.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -79,35 +82,56 @@
 
             <Grid Name="CategoryGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="160*" />
+                    <ColumnDefinition Width="80*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Content="Nome" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding name}" />
+                <Label Grid.Row="0" Grid.Column="0" Content="Nome" Margin="0,0,0,0" Grid.RowSpan="2" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding name}" Grid.ColumnSpan="2" Margin="0,0,0,0" Grid.RowSpan="2" />
 
-                <Label Grid.Row="1" Grid.Column="0" Content="Cor" />
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding color}" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Cor" Margin="0,0,0,0" Grid.RowSpan="2" />
+                <TextBox 
+                    Grid.Row="1" 
+                    Grid.Column="1" 
+                    IsReadOnly="True" 
+                    Text="{Binding color}"  
+                    Margin="0,0,0,0" 
+                    Grid.RowSpan="2"
+                    />
+                <xctk:ColorPicker
+                    Grid.Row="1" Grid.Column="2"
+                    SelectedColor="{Binding color}"    
+                ></xctk:ColorPicker>
 
-                <Label Grid.Row="2" Grid.Column="0" Content="Ícone" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding icon}" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Tipo" Margin="0,0,0,0" Grid.RowSpan="2" />
+                <ComboBox 
+                    x:Name="transactionTypeComboBox" 
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="2"
+                    ></ComboBox>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Ícone" Margin="0,0,0,0" Grid.RowSpan="2" />
+                <ComboBox x:Name="IconsComboBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"></ComboBox>
 
                 <Button 
                     Grid.Row="4" 
-                    Grid.ColumnSpan="2" 
                     Style="{DynamicResource RoundCorner}"
                     Width="150"
-                    Margin="15" 
-                    HorizontalAlignment="Center"
+                    Margin="20,15,0,0" 
+                    HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Click="ConfirmBtn"
+                    Click="ConfirmBtn" 
+                    Grid.Column="1"
                     >Confirmar</Button>
             </Grid>
         </StackPanel>

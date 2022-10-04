@@ -10,9 +10,11 @@ namespace ControleFinanceiro.controllers
     public class TransactionController
     {
         protected readonly Context _context;
+        private readonly MainWindow _mainWindow;
         public TransactionController(Context context)
         {
             _context = context;
+            _mainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
         }
 
         public List<Transaction> GetAll()
@@ -28,6 +30,7 @@ namespace ControleFinanceiro.controllers
         {
             _context.Transactions.Add(transaction);
             _context.SaveChanges();
+            _mainWindow.updateBalanceText();
             return true;
         }
 
@@ -35,6 +38,7 @@ namespace ControleFinanceiro.controllers
         {
             _context.Transactions.Remove(transation);
             _context.SaveChanges();
+            _mainWindow.updateBalanceText();
             return true;
         }
 
@@ -42,7 +46,21 @@ namespace ControleFinanceiro.controllers
         {
             _context.Transactions.Update(transation);
             _context.SaveChanges();
+            _mainWindow.updateBalanceText();
             return true;
+        }
+
+        public decimal GetBalance()
+        {
+            decimal balance = 0;
+            var items = _context.Transactions.ToList();
+
+            items.ForEach(obj =>
+            {
+                balance += obj.transactionType == "I" ? Convert.ToDecimal(obj.value) : -Convert.ToDecimal(obj.value);
+            });
+
+            return balance;
         }
     }
 }

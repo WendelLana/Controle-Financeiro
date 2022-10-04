@@ -11,9 +11,11 @@ namespace ControleFinanceiro.models
         public Guid id { get; set; }
         public string name { get; set; } = string.Empty;
 
-        public string color { get; set; } = string.Empty;
+        public string color { get; set; } = "#FF000000";
 
         public string icon { get; set; } = string.Empty;
+        public string pack { get; set; } = string.Empty;
+        public string transactionType { get; set; } = string.Empty;
 
         public Category() { }
     }

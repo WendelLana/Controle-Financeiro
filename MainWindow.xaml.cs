@@ -26,21 +26,23 @@ namespace ControleFinanceiro
     public partial class MainWindow : Window
     {
         private readonly Context context;
+        private readonly TransactionController _transactionController;
         public Decimal balance { get; set; }
 
         public void updateBalanceText()
         {
+            this.balance = _transactionController.GetBalance();
             SaldoText.Text = $"R${string.Format("{0:#.00}", Convert.ToDecimal(this.balance))}";
         }
         public MainWindow(Context context)
         {
             this.context = context;
+            _transactionController = new TransactionController(context);
             CultureInfo culture = (CultureInfo) CultureInfo.CurrentCulture.Clone();
             culture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
             culture.DateTimeFormat.LongTimePattern = "";
             Thread.CurrentThread.CurrentCulture = culture;
             
-            this.balance = 25.5M;
             InitializeComponent();
             DataContext = new HomeView(context);
             

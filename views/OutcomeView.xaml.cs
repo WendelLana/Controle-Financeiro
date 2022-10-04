@@ -71,5 +71,10 @@ namespace ControleFinanceiro.views
             controller.Add(outcome);
             GetOutcomes();
         }
+
+        public OutcomeController GetOutcomeController()
+        {
+            return controller;
+        }
     }
 }

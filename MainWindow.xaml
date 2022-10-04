@@ -10,7 +10,6 @@
     Title="MainWindow" 
     Height="600"
     Width="1200"
-    xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
  >
     <Window.Resources>
@@ -35,6 +34,20 @@
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="False">
                     <Setter Property="Background" Value="White"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MenuCategoriaWrapper" BasedOn="{StaticResource BaseMenuBorderWrapper}" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="0 0 0 40" />
+            <Setter Property="ToolTip" Value="Gerenciar Categorias" />
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#995F9EA0"></Setter>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="white"></Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -170,7 +183,7 @@
                         
                         <Border
                             Name="CategoryIcon" 
-                            Style="{DynamicResource MenuEntradaWrapper}"
+                            Style="{DynamicResource MenuCategoriaWrapper}"
                             MouseDown="CategoryIcon_MouseDown"
                             >
                             <StackPanel Orientation="Horizontal">

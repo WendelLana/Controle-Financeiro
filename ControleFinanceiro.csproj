@@ -8,9 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NewFolder1\**" />
     <Compile Remove="pasta1\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
     <EmbeddedResource Remove="pasta1\**" />
+    <None Remove="NewFolder1\**" />
     <None Remove="pasta1\**" />
+    <Page Remove="NewFolder1\**" />
     <Page Remove="pasta1\**" />
   </ItemGroup>
 

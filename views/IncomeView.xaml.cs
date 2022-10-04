@@ -68,5 +68,10 @@ namespace ControleFinanceiro.views
             controller.Add(income);
             GetIncomes();
         }
+        
+        public IncomeController GetIncomeController()
+        {
+            return controller;
+        }
     }
 }
