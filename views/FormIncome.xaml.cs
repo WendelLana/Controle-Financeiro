@@ -12,38 +12,83 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ControleFinanceiro.models;
+using ControleFinanceiro.controllers;
+using MahApps.Metro.IconPacks;
 
 namespace ControleFinanceiro.views
 {
     /// <summary>
-    /// Interaction logic for GerenciarGasto.xaml
+    /// Interaction logic for FormIncome.xaml
     /// </summary>
     public partial class FormIncome : Window
     {
 
         private string typeAction = "";
         private IncomeView parentView;
-
-        public FormIncome(string titleLabel, Income data, string type)
+        private IncomeController _controller;
+        public FormIncome(string titleLabel, Transaction data, string type)
         {
             parentView = (IncomeView)Application.Current.MainWindow.DataContext;
             typeAction = type;
 
             InitializeComponent();
+            _controller = parentView.GetIncomeController();
             TitleLabel.Content = titleLabel;
             IncomeGrid.DataContext = data;
+
+            var availablesCategories = _controller.GetAvailableCategories();
+
+            availablesCategories.ToList().ForEach(val =>
+            {
+                var comboBoxItem = new ComboBoxItem();
+                var itemContent = new StackPanel { Orientation = Orientation.Horizontal };
+
+                PackIconBase icon;
+
+                switch (val.pack)
+                {
+                    case "PackIconMaterial":
+                        icon = new PackIconMaterial()
+                        {
+                            Kind = (PackIconMaterialKind)Enum.Parse(typeof(PackIconMaterialKind), val.icon),
+                            Width = 25,
+                            Height = 25,
+                            Foreground = (Brush) new BrushConverter().ConvertFromString(val.color),
+                        };
+                        break;
+                    default: icon = new PackIconMaterial(); break;
+                }
+
+                itemContent.Children.Add(icon);
+                itemContent.Children.Add(new Label { Content = val.name, Margin = new Thickness(20, 0, 0, 0) });
+                comboBoxItem.Content = itemContent;
+                CategoriesComboBox.Items.Add(comboBoxItem);
+
+                if (type == "editar")
+                {
+                    var index = availablesCategories.FindIndex(i => i.id == data.categoryId);
+                    CategoriesComboBox.SelectedIndex = index;
+                }
+            });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var selectedIndex = CategoriesComboBox.SelectedIndex;
+            var selectedCategory = _controller.GetAvailableCategories()[selectedIndex];
+
             if (typeAction.Equals("cadastrar"))
             {
-                Income newIncome = IncomeGrid.DataContext as Income;
+                Transaction newIncome = IncomeGrid.DataContext as Transaction;
+                newIncome = IncomeGrid.DataContext as Transaction;
+                newIncome.categoryId = selectedCategory.id;
                 parentView.AddIncome(newIncome);
             }
             else if (typeAction.Equals("editar"))
             {
-                Income editIncome = IncomeGrid.DataContext as Income;
+                Transaction editIncome = IncomeGrid.DataContext as Transaction;
+                editIncome = IncomeGrid.DataContext as Transaction;
+                editIncome.categoryId = selectedCategory.id;
                 parentView.EditIncome(editIncome);
             }
             else

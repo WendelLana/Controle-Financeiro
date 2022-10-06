@@ -81,10 +81,10 @@
 
             <Grid Name="OutcomeGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
@@ -109,17 +109,17 @@
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding description}" />
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Categoria" />
-                <!-- Combo box para escolher em uma lista de categorias -->
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding categoryId}" />
+                <ComboBox x:Name="CategoriesComboBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"></ComboBox>
 
                 <Button 
                     Grid.Row="4" 
-                    Grid.ColumnSpan="2" 
                     Style="{DynamicResource RoundCorner}"
                     Width="150"
-                    Margin="15" 
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" Click="Button_Click"
+                    Margin="20,15,0,0" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Click="Button_Click" 
+                    Grid.Column="1"
                     >Confirmar</Button>
             </Grid>
         </StackPanel>

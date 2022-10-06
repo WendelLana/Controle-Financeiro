@@ -23,9 +23,11 @@ namespace ControleFinanceiro.views
     public partial class CategoryView : UserControl
     {
         private readonly Context context;
+        private readonly CategoryController _controller;
         public CategoryView(Context context)
         {
             this.context = context;
+            _controller = new CategoryController(context);
             InitializeComponent();
             GetCategories();
         }
@@ -45,8 +47,7 @@ namespace ControleFinanceiro.views
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
             var category = (sender as FrameworkElement).DataContext as Category;
-            context.Categories.Remove(category);
-            context.SaveChanges();
+            _controller.Remove(category);
             GetCategories();
         }
 
@@ -58,15 +59,13 @@ namespace ControleFinanceiro.views
 
         public void EditCategory(Category category)
         {
-            context.Categories.Update(category);
-            context.SaveChanges();
+            _controller.Update(category);
             GetCategories();
         }
 
         public void AddCategory(Category NewCategory)
         {
-            context.Categories.Add(NewCategory);
-            context.SaveChanges();
+            _controller.Add(NewCategory);
             GetCategories();
         }
     }
