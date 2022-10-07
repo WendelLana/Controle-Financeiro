@@ -28,7 +28,15 @@ public partial class Chart : UserControl
         InitializeComponent();
     }
 
-    private void RadioButton_Checked(object sender, RoutedEventArgs e)
+    private void ColumnChart_Checked(object sender, RoutedEventArgs e)
+    {
+        DataContext = new ChartColumn(context);
+    }
+    private void PieChart_Checked(object sender, RoutedEventArgs e)
+    {
+        DataContext = new ChartPie(context);
+    }
+    private void BarChart_Checked(object sender, RoutedEventArgs e)
     {
         DataContext = new ChartColumn(context);
     }

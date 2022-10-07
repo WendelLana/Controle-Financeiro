@@ -10,6 +10,7 @@
     Title="MainWindow" 
     Height="600"
     Width="1200"
+    ResizeMode="NoResize"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
  >
     <Window.Resources>

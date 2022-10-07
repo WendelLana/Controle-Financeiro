@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ControleFinanceiro.models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleFinanceiro.controllers
 {
@@ -19,7 +20,7 @@ namespace ControleFinanceiro.controllers
 
         public List<Transaction> GetAll()
         {
-            return _context.Transactions.ToList();
+            return _context.Transactions.Include("Category").ToList();
         }
         public Transaction GetById(Guid id)
         {
@@ -65,7 +66,12 @@ namespace ControleFinanceiro.controllers
 
         public List<Transaction> GetByMonthAndYear(int month, int year)
         {
-            return _context.Transactions.Where(obj => obj.date.Month == month && obj.date.Year == year).ToList();
+            return _context.Transactions.Where(obj => obj.date.Month == month && obj.date.Year == year).Include("Category").ToList();
+        }
+
+        public List<Transaction> GetAllByYear(int year)
+        {
+            return _context.Transactions.Where(obj => obj.date.Year == year).Include("Category").ToList();
         }
     }
 }

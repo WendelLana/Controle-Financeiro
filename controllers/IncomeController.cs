@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ControleFinanceiro.models;
+using Microsoft.EntityFrameworkCore;
 using Bogus;
 
 namespace ControleFinanceiro.controllers
@@ -17,7 +18,7 @@ namespace ControleFinanceiro.controllers
 
         public List<Transaction> GetAll()
         {
-            return _context.Transactions.Where(obj => obj.transactionType == "I").ToList();
+            return _context.Transactions.Where(obj => obj.transactionType == "I").Include("Category").ToList();
         }
 
         public List<Category> GetAvailableCategories()

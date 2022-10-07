@@ -33,6 +33,10 @@ namespace ControleFinanceiro
         {
             this.balance = _transactionController.GetBalance();
             SaldoText.Text = $"R${string.Format("{0:#.00}", Convert.ToDecimal(this.balance))}";
+
+            var redBrush = (Brush)new BrushConverter().ConvertFromString("#FFFF0000");
+            var greenBrush = (Brush)new BrushConverter().ConvertFromString("#FF008000");
+            SaldoText.Foreground = this.balance >= 0 ? greenBrush : redBrush;
         }
         public MainWindow(Context context)
         {
