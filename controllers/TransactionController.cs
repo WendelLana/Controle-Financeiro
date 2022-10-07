@@ -62,5 +62,10 @@ namespace ControleFinanceiro.controllers
 
             return balance;
         }
+
+        public List<Transaction> GetByMonthAndYear(int month, int year)
+        {
+            return _context.Transactions.Where(obj => obj.date.Month == month && obj.date.Year == year).ToList();
+        }
     }
 }

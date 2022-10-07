@@ -67,5 +67,10 @@ namespace ControleFinanceiro
         {
             DataContext = new IncomeView(context);
         }
+
+        private void ChartIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new Chart(context);
+        }
     }
 }

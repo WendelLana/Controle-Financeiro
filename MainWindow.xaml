@@ -237,7 +237,7 @@
                         <Border
                             Name="ChartIcon" 
                             Style="{DynamicResource MenuGraficosWrapper}"
-                            >
+                            MouseDown="ChartIcon_MouseDown">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconUnicons
                                     Kind="Chart"
