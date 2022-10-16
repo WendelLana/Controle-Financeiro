@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="ControleFinanceiro.views.Chart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ControleFinanceiro.views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.ColumnSpan="3" Grid.Row="0" FontWeight="Bold" Content="Escolha o Gráfico:"/>
+        <RadioButton Grid.Column="0" Grid.Row="1" Content="Pizza" IsChecked="True"  Checked="PieChart_Checked"/>
+        <RadioButton Grid.Column="1" Grid.Row="1" Content="Barra" Checked="ColumnChart_Checked"/>
+        <RadioButton Grid.Column="2" Grid.Row="1" Content="Linha" Checked="LineChart_Checked"/>
+        <ContentControl Content="{Binding}" Grid.Row="2" Grid.ColumnSpan="3"/>
+    </Grid>
+</UserControl>

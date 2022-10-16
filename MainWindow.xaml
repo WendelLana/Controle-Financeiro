@@ -10,6 +10,7 @@
     Title="MainWindow" 
     Height="600"
     Width="1200"
+    ResizeMode="NoResize"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
  >
     <Window.Resources>
@@ -237,7 +238,7 @@
                         <Border
                             Name="ChartIcon" 
                             Style="{DynamicResource MenuGraficosWrapper}"
-                            >
+                            MouseDown="ChartIcon_MouseDown">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconUnicons
                                     Kind="Chart"

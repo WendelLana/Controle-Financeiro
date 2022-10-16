@@ -28,7 +28,7 @@ namespace ControleFinanceiro.views
             controller = new TransactionController(context);
             InitializeComponent();
             var lastItems = controller.GetAll();
-            HomeTable.ItemsSource = lastItems.OrderByDescending(i => i.date.Date).ThenByDescending(i => i.date.TimeOfDay).ToList();
+            HomeTable.ItemsSource = lastItems.OrderByDescending(i => i.date.Date).ThenByDescending(i => i.date.TimeOfDay).Take(20).ToList();
         }
     }
 }

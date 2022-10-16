@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ControleFinanceiro.models;
 using Bogus;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleFinanceiro.controllers
 {
@@ -15,7 +16,7 @@ namespace ControleFinanceiro.controllers
 
         public List<Transaction> GetAll()
         {
-            return _context.Transactions.Where(obj => obj.transactionType == "O").ToList();
+            return _context.Transactions.Where(obj => obj.transactionType == "O").Include("Category").ToList();
         }
 
         public List<Category> GetAvailableCategories()
