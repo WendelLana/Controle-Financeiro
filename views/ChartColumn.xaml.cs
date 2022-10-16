@@ -3,6 +3,8 @@ using ControleFinanceiro.models;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace ControleFinanceiro.views;
@@ -13,23 +15,13 @@ namespace ControleFinanceiro.views;
 public partial class ChartColumn : UserControl
 {
     private readonly TransactionController controller;
+    private readonly OutcomeController outController;
     public ChartColumn(Context context)
     {
         controller = new TransactionController(context);
+        outController = new OutcomeController(context);
         InitializeComponent();
-        SeriesCollection = new SeriesCollection
-        {
-            new ColumnSeries
-            {
-                Title = "Entrada",
-                Values = new ChartValues<double>()
-            },
-            new ColumnSeries
-            {
-                Title = "Saída",
-                Values = new ChartValues<double>()
-            }
-         };
+        SeriesCollection = new();
 
         PlotChart(DateTime.Now.Year);
 
@@ -45,18 +37,40 @@ public partial class ChartColumn : UserControl
 
     private void PlotChart(int year)
     {
-        for (int i = 1; i <= 12; i++)
+        var list = controller.GetAllByYear(year: DateTime.Now.Year);
+        var categories = outController.GetAvailableCategories();
+        foreach (var cat in categories)
         {
-            decimal sumOutput = 0, sumInput = 0;
-            foreach (Transaction transaction in controller.GetByMonthAndYear(month: i, year: year))
+            ChartValues<double> monthOutput = new();
+            for (int i = 0; i < 12; i++)
             {
-                if (transaction.transactionType == "O")
-                    sumOutput += transaction.value;
-                else
-                    sumInput += transaction.value;
+                monthOutput.Insert(i, 0);
+                
             }
-            SeriesCollection[0].Values.Add(((double)sumInput));
-            SeriesCollection[1].Values.Add(((double)sumOutput));
+
+            list.Where(obj => obj.transactionType == "O" && obj.categoryId == cat.id)
+                .Select(s => new
+                {
+                    Month = s.date.Month,
+                    Value = s.value
+                })
+                .GroupBy(g => g.Month)
+                .Select(s => new
+                {
+                    Month = s.First().Month,
+                    value = (double)s.Sum(x => x.Value)
+                })
+                .ToList()
+                .ForEach(item =>
+                {
+                    monthOutput.Insert(item.Month - 1, item.value);
+                });
+
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = cat.name,
+                Values = monthOutput
+            });
         }
     }
 }

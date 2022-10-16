@@ -36,8 +36,8 @@ public partial class Chart : UserControl
     {
         DataContext = new ChartPie(context);
     }
-    private void BarChart_Checked(object sender, RoutedEventArgs e)
+    private void LineChart_Checked(object sender, RoutedEventArgs e)
     {
-        DataContext = new ChartColumn(context);
+        DataContext = new ChartLine(context);
     }
 }

@@ -184,35 +184,22 @@ namespace ControleFinanceiro.views
 
         private string GetMonthString(int month)
         {
-            switch(month)
+            return month switch
             {
-                case 1:
-                    return "Janeiro";
-                case 2:
-                    return "Fevereiro";
-                case 3:
-                    return "Março";
-                case 4:
-                    return "Abril";
-                case 5:
-                    return "Maio";
-                case 6:
-                    return "Junho";
-                case 7:
-                    return "Julho";
-                case 8:
-                    return "Agosto";
-                case 9:
-                    return "Setembro";
-                case 10:
-                    return "Outubro";
-                case 11:
-                    return "Novembro";
-                case 12:
-                    return "Dezembro";
-                default:
-                    return "";
-            }
+                1 => "Janeiro",
+                2 => "Fevereiro",
+                3 => "Março",
+                4 => "Abril",
+                5 => "Maio",
+                6 => "Junho",
+                7 => "Julho",
+                8 => "Agosto",
+                9 => "Setembro",
+                10 => "Outubro",
+                11 => "Novembro",
+                12 => "Dezembro",
+                _ => "",
+            };
         }
     }
 }

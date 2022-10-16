@@ -18,9 +18,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.ColumnSpan="3" Grid.Row="0" FontWeight="Bold" Content="Escolha o Gráfico:"/>
-        <RadioButton Grid.Column="0" Grid.Row="1" Content="Coluna" Checked="ColumnChart_Checked"/>
-        <RadioButton Grid.Column="1" Grid.Row="1" Content="Linha"/>
-        <RadioButton Grid.Column="2" Grid.Row="1" Content="Pizza" IsChecked="True"  Checked="PieChart_Checked"/>
+        <RadioButton Grid.Column="0" Grid.Row="1" Content="Pizza" IsChecked="True"  Checked="PieChart_Checked"/>
+        <RadioButton Grid.Column="1" Grid.Row="1" Content="Barra" Checked="ColumnChart_Checked"/>
+        <RadioButton Grid.Column="2" Grid.Row="1" Content="Linha" Checked="LineChart_Checked"/>
         <ContentControl Content="{Binding}" Grid.Row="2" Grid.ColumnSpan="3"/>
     </Grid>
 </UserControl>
