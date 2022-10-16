@@ -80,6 +80,11 @@ namespace ControleFinanceiro.views
 
         private void ConfirmBtn(object sender, RoutedEventArgs e)
         {
+            if (CatName.Text.Length == 0)
+            {
+                MessageBox.Show("Nome é obrigatório!", "Alerta", MessageBoxButton.OK);
+                return;
+            }
             var selectedIndex = IconsComboBox.SelectedIndex;
             var selectedIcon = CategoryController.GetAvailableCategoriesMahIcons().ToList()[selectedIndex];
             var selectedtransactionType = transactionTypeComboBox.SelectedValue.ToString();

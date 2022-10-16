@@ -103,7 +103,7 @@
                     />
 
                 <Label Grid.Row="1" Grid.Column="0" Content="Valor" />
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding value}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding value}" Name="Value"/>
 
                 <Label Grid.Row="2" Grid.Column="0" Content="Descrição" />
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding description}" />

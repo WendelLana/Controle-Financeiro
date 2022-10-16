@@ -82,6 +82,11 @@ namespace ControleFinanceiro.views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var selectedIndex = CategoriesComboBox.SelectedIndex;
+            if (selectedIndex == -1 || Value.Text.Length == 0)
+            {
+                MessageBox.Show("Por favor, selecione uma categoria e coloque um valor válido!", "Alerta", MessageBoxButton.OK);
+                return;
+            }
             var selectedCategory = _controller.GetAvailableCategories()[selectedIndex];
 
             if (typeAction.Equals("cadastrar"))

@@ -32,7 +32,7 @@ namespace ControleFinanceiro
         public void updateBalanceText()
         {
             this.balance = _transactionController.GetBalance();
-            SaldoText.Text = $"R${string.Format("{0:#.00}", Convert.ToDecimal(this.balance))}";
+            SaldoText.Text = $"R${string.Format("{0:0.00}", Convert.ToDecimal(this.balance))}";
 
             var redBrush = (Brush)new BrushConverter().ConvertFromString("#FFFF0000");
             var greenBrush = (Brush)new BrushConverter().ConvertFromString("#FF008000");
