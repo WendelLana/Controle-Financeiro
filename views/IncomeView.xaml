@@ -78,11 +78,11 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Header="Tipo">
+                    <DataGridTemplateColumn Header="Data">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
-                                    Text="{Binding date}"
+                                    Text="{Binding date, StringFormat=dd/MM/yyyy HH:mm}"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     ></TextBlock>
@@ -114,7 +114,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Header="Descrição">
+                    <DataGridTemplateColumn Header="Tipo">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
