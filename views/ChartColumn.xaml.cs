@@ -63,6 +63,7 @@ public partial class ChartColumn : UserControl
                 .ToList()
                 .ForEach(item =>
                 {
+                    monthOutput.RemoveAt(item.Month - 1);
                     monthOutput.Insert(item.Month - 1, item.value);
                 });
 
