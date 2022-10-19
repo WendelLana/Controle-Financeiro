@@ -33,7 +33,7 @@ namespace ControleFinanceiro.views
 
         private void GetIncomes()
         {
-            IncomeTable.ItemsSource = controller.GetAll();
+            IncomeTable.ItemsSource = controller.GetAll().OrderByDescending(i => i.date);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)

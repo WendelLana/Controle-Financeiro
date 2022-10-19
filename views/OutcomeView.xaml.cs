@@ -36,7 +36,7 @@ namespace ControleFinanceiro.views
 
         private void GetOutcomes()
         {
-            OutcomeTable.ItemsSource = controller.GetAll();
+            OutcomeTable.ItemsSource = controller.GetAll().OrderByDescending(o => o.date);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
