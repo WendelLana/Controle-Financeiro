@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ControleFinanceiro.models;
 using ControleFinanceiro.controllers;
 using MahApps.Metro.IconPacks;
+using System.Text.RegularExpressions;
 
 namespace ControleFinanceiro.views
 {
@@ -101,6 +102,12 @@ namespace ControleFinanceiro.views
                 //error
             }
             Close();
+        }
+
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9.-]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
