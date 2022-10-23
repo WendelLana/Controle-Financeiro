@@ -11,9 +11,11 @@ namespace ControleFinanceiro.controllers
     public class CategoryController
     {
         protected readonly Context _context;
+        private readonly MainWindow _mainWindow;
         public CategoryController(Context context)
         {
             _context = context;
+            _mainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
         }
 
         public List<Category> GetAll()
@@ -36,6 +38,7 @@ namespace ControleFinanceiro.controllers
         {
             _context.Categories.Remove(category);
             _context.SaveChanges();
+            _mainWindow.updateBalanceText();
             return true;
         }
 
