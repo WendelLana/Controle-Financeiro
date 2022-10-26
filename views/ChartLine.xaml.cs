@@ -34,12 +34,12 @@ public partial class ChartLine : UserControl
 
         List<string> labels = new();
         list.Where(obj => obj.transactionType == "O")
+        .OrderBy(i => i.date)
         .Select(t => new
         {
-            Parsed = String.Concat(t.date.Day, "/", t.date.Month),
+            Parsed = String.Concat(t.date.Day.ToString("D2"), "/", t.date.Month.ToString("D2")),
             Value = t.value,
-        })
-        .OrderBy(t => t.Parsed)
+        })        
         .GroupBy(g => g.Parsed)
         .Select(s => new
         {
